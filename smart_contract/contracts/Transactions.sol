@@ -30,3 +30,4 @@ contract Transactions{
         
     }
 }
+// receiver is spelled as reciever pay attention when accessing the contract

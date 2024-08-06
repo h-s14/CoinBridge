@@ -5,6 +5,7 @@ import { BsInfoCircle } from "react-icons/bs";
 import { ethers } from "ethers";
 import { TransactionContext } from "../contexts/TransactionContext";
 import { Loader } from "./";
+import { shortenAddress } from "../utils/shortenAddress";
 const commonStyles =
   "min-h-[70px] sm:px-0 px-2 sm:min-w-[120px] flex justify-center items-center border-[0.5px] border-gray-400 text-sm font-light text-white";
 const Input = ({ placeholder, name, type, value, handleChange }) => (
@@ -24,6 +25,7 @@ const Welcome = () => {
     formData,
     sendTransaction,
     handleChange,
+    isLoading,
   } = useContext(TransactionContext);
 
   const handleSubmit = (e) => {
@@ -45,7 +47,7 @@ const Welcome = () => {
           </h1>
           <p className="text-left mt-5 text-white font-light md:w-9/12 w-11/12 text-base">
             Explore the crypto world. Buy and sell cryptocurrencies easily on
-            CoinBridge
+            Coin Bridge
           </p>
           {!currentAccount && (
             <button
@@ -61,7 +63,7 @@ const Welcome = () => {
           <div className="grid sm:grid-cols-3 grid-cols-2 w-full mt-10">
             <div className={`rounded-tl-2xl ${commonStyles}`}>Reliability</div>
             <div className={commonStyles}>Security</div>
-            <div className={`rounded-tr-2xl ${commonStyles}`}>Reliability</div>
+            <div className={`rounded-tr-2xl ${commonStyles}`}>Ethereum</div>
             <div className={`rounded-bl-2xl ${commonStyles}`}>Web 3.0</div>
             <div className={commonStyles}>Low Fees</div>
             <div className={`rounded-br-2xl ${commonStyles}`}>BlockChain</div>
@@ -79,9 +81,9 @@ const Welcome = () => {
             </div>
             <div>
               <p className="text-white font-light text-sm">
-                0xadsfasdfasdfasd....asdfasd
+                {shortenAddress(currentAccount)}
               </p>
-              <p className="text-white font-semibold mt-1">Harkirat Singh</p>
+              <p className="text-white font-semibold mt-1">ETH Coin-Bridge</p>
             </div>
           </div>
         </div>
@@ -111,7 +113,7 @@ const Welcome = () => {
             handleChange={handleChange}
           />
           <div className="h-[1px] w-full bg-gray-400 my-2" />
-          {false ? (
+          {isLoading ? (
             <Loader />
           ) : (
             <button
