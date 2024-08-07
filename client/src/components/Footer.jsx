@@ -7,16 +7,16 @@ const Footer = () => {
           <img src={logo} alt="logo" className="w-32"></img>
         </div>
         <div className="flex flex-1 justify-evenly items-center flex-wrap sm:mt-0 mt-5 w-full">
-          <p className="text-whte text-base text-center mx-2 cursor-pointer">
+          <p className="text-whte text-base text-center mx-2 cursor-pointer text-white">
             Market
           </p>
-          <p className="text-whte text-base text-center mx-2 cursor-pointer">
+          <p className="text-whte text-base text-center mx-2 cursor-pointer text-white">
             Exchange
           </p>
-          <p className="text-whte text-base text-center mx-2 cursor-pointer">
+          <p className="text-whte text-base text-center mx-2 cursor-pointer text-white">
             Tutorials
           </p>
-          <p className="text-whte text-base text-center mx-2 cursor-pointer">
+          <p className="text-whte text-base text-center mx-2 cursor-pointer text-white">
             Wallets
           </p>
         </div>
