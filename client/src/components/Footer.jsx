@@ -24,7 +24,7 @@ const Footer = () => {
       <div className="flex-justify-center items-center flex-col mt-5">
         <p className="text-white text-sm text-center">Come join us</p>
         <p className="text-white text-sm text-center">
-          14singh.harkirat@gmail.com
+          <a href="mailto:someone@example.com">14singh.harkirat@gmail.com</a>
         </p>
       </div>
       <div className="sm:w-[90%] w-full h-[0.25px] bg-gray-400 mt-5" />
