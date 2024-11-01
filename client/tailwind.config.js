@@ -1,3 +1,5 @@
+import forms from "@tailwindcss/forms";
+
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ["./src/**/*.{js,jsx,ts,tsx}", "./public/index.html"],
@@ -13,12 +15,8 @@ export default {
       },
       keyframes: {
         "slide-in": {
-          "0%": {
-            transform: "translateX(120%)",
-          },
-          "100%": {
-            transform: "translateX(0%)",
-          },
+          "0%": { transform: "translateX(120%)" },
+          "100%": { transform: "translateX(0%)" },
         },
       },
       animation: {
@@ -26,5 +24,5 @@ export default {
       },
     },
   },
-  plugins: [require("@tailwindcss/forms")],
+  plugins: [forms],
 };
