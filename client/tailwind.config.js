@@ -1,8 +1,7 @@
 /** @type {import('tailwindcss').Config} */
-module.exports = {
-  purge: ["./src/**/*.{js,jsx,ts,tsx}", "./public/index.html"],
+export default {
+  content: ["./src/**/*.{js,jsx,ts,tsx}", "./public/index.html"],
   mode: "jit",
-  // or 'media' or 'class'
   theme: {
     fontFamily: {
       display: ["Open Sans", "sans-serif"],
@@ -15,11 +14,9 @@ module.exports = {
       keyframes: {
         "slide-in": {
           "0%": {
-            "-webkit-transform": "translateX(120%)",
             transform: "translateX(120%)",
           },
           "100%": {
-            "-webkit-transform": "translateX(0%)",
             transform: "translateX(0%)",
           },
         },
@@ -28,9 +25,6 @@ module.exports = {
         "slide-in": "slide-in 0.5s ease-out",
       },
     },
-  },
-  variants: {
-    extend: {},
   },
   plugins: [require("@tailwindcss/forms")],
 };
