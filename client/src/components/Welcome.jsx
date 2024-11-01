@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import { AiFillPlayCircle } from "react-icons/ai";
 import { SiEthereum } from "react-icons/si";
 import { BsInfoCircle } from "react-icons/bs";
 import { ethers } from "ethers";
@@ -37,15 +36,16 @@ const Welcome = () => {
     sendTransaction();
   };
   return (
-    <div className="flex w-full justify-center items-center">
-      <div className="flex mf: flex-row flex-col items-start justify-between md:p-20 py-12 px-4">
+    <div className="flex w-full pt-20 justify-center items-center">
+      <div className="flex mf:  flex-col items-start justify-between md:p-20 py-12 px-4">
         <div className="flex flex-1 justify-start flex-col mf:mr-10">
           <h1 className="text-3xl sm:text-5xl text-white text-gradient py-1">
             Send Crypto
-            <br />
+          </h1>
+          <h1 className="text-3xl sm:text-5xl text-white text-gradient py-1">
             across the world
           </h1>
-          <p className="text-left mt-5 text-white font-light md:w-9/12 w-11/12 text-base">
+          <p className="text-left mt-5 text-white font-light md:w-9/12 w-11/12 py-1 text-base">
             Explore the crypto world. Buy and sell cryptocurrencies easily on
             Coin Bridge
           </p>
@@ -53,7 +53,7 @@ const Welcome = () => {
             <button
               type="button"
               onClick={connectWallet}
-              className="flex flex-row justify-center items-center my-5 bg-[#2952e3] p-3 rounded-full cursor-pointer hover:bg-[#2546bd]"
+              className="flex flex-row justify-center items-center my-8 bg-[#2952e3] p-3 rounded-full cursor-pointer hover:bg-[#2546bd]"
             >
               <p className="text-white text-base font-semibold">
                 Connect Wallet
@@ -70,7 +70,7 @@ const Welcome = () => {
           </div>
         </div>
       </div>
-      <div className="flex flex-col flex-1 items-center justify-start w-full mf:mt-0 mt-10">
+      <div className="flex flex-col flex-1 items-center justify-start w-full mf:mt-0  gap-7 mt-10">
         <div className="p-3 justify-end items-start flex-col rounded-xl h-40 sm:w-72 w-full my-5 eth-card white-glassmorphism">
           <div className="flex justify-between flex-col w-full h-full">
             <div className="flex justify-between items-start">

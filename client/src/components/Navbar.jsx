@@ -8,7 +8,7 @@ const NavbarItem = ({ title, classProps }) => {
 const Navbar = () => {
   const [toggleMenu, setToggleMenu] = React.useState(false);
   return (
-    <nav className="w-full flex md:justify-center justify-between items-center p-4">
+    <nav className="fixed top-0 z-50 w-full flex md:justify-center justify-between items-center backdrop-blur-md p-4 bg-gray-500 bg-opacity-40">
       <div className="md:flex-[0.5] flex-initial justify-center items-center">
         <img src={logo} alt="logo" className="w-32 cursonr-pointer"></img>
       </div>
