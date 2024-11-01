@@ -12,15 +12,13 @@ jobs:
       - name: Checkout Source
         uses: actions/checkout@v4
 
-      - name: Navigate to Client
-        run: cd client
-
       - name: Installing Dependencies
         run: npm install
+        working-directory: ./client
 
       - name: Building The App
-        run: |
-          npm run build
+        run: npm run build
+        working-directory: ./client
 
       - name: Reload Nginx
         run: |
