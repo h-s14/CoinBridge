@@ -20,6 +20,5 @@ jobs:
         run: npm run build
         working-directory: ./client
 
-      - name: Reload Nginx
-        run: |
-          sudo systemctl restart nginx
+      - name: Restart Nginx
+        run: sudo systemctl restart nginx
