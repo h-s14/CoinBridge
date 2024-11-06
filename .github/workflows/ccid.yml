@@ -35,8 +35,8 @@ jobs:
         with:
           name: build-output
 
-      # - name: Moving the files to the serving directory
-      #   run: sudo mv /home/ubuntu/coinBridge/_work/CoinBridge/CoinBridge/client/* /var/www/coin.harkirat.site/
+      - name: Moving the files to the serving directory
+        run: sudo mv /home/ubuntu/coinBridge/_work/CoinBridge/CoinBridge/* /var/www/coin.harkirat.site/
 
-      # - name: Restart Nginx
-      #   run: sudo systemctl restart nginx
+      - name: Restart Nginx
+        run: sudo systemctl restart nginx
