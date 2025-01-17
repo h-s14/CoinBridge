@@ -29,7 +29,7 @@ jobs:
     runs-on: PRS
     steps:
       - name: Pull image from docker hub
-        run: docker pull hs14/coin-react
+        run: sudo docker pull hs14/coin-react
 
       - name: Stop and Remove Existing Container
         run: |
