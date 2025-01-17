@@ -33,9 +33,9 @@ jobs:
 
       - name: Stop and Remove Existing Container
         run: |
-          docker stop coin-react || true
-          docker rm coin-react || true
+          sudo docker stop coin-react || true
+          sudo docker rm coin-react || true
 
       - name: Run Docker Container
         run: |
-          docker run -d -p 5500:80 --name coin-react hs14/coin-react
+          sudo docker run -d -p 5500:80 --name coin-react hs14/coin-react
