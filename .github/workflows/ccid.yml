@@ -5,7 +5,7 @@ on:
     branches:
       - main
 jobs:
-  build:
+  build-docker:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Source
@@ -24,8 +24,8 @@ jobs:
       - name: Publish Image to Docker Hub
         run: docker push hs14/coin-react
 
-  deploy:
-    needs: build
+  deploy-docker:
+    needs: build-docker
     runs-on: PRS
     steps:
       - name: Pull image from docker hub
@@ -39,3 +39,40 @@ jobs:
       - name: Run Docker Container
         run: |
           sudo docker run -d -p 5500:80 --name coin-react --restart unless-stopped hs14/coin-react
+
+  build-aws:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Source
+        uses: actions/checkout@v4
+
+      - name: Installing Dependencies
+        run: npm install
+        working-directory: ./client
+
+      - name: Building The App
+        run: npm run build
+        working-directory: ./client
+
+      - name: Uploading the Build Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-output
+          path: ./client/dist
+
+  deploy-aws:
+    runs-on: AWS
+    needs: build-aws
+    steps:
+      - name: Downloading Built Artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: build-output
+      - name: Remove the older files from serving directory
+        run: sudo rm -rf /var/www/coin.harkirat.site/*
+
+      - name: Moving the files to the serving directory
+        run: sudo mv /home/ubuntu/coinBridge/_work/CoinBridge/CoinBridge/* /var/www/coin.harkirat.site/
+
+      - name: Restart Nginx
+        run: sudo systemctl restart nginx
