@@ -38,4 +38,4 @@ jobs:
 
       - name: Run Docker Container
         run: |
-          sudo docker run -d -p 5500:80 --name coin-react hs14/coin-react
+          sudo docker run -d -p 5500:80 --name coin-react --restart unless-stopped hs14/coin-react
