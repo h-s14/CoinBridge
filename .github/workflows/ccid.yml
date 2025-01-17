@@ -19,7 +19,7 @@ jobs:
 
       - name: Build Docker Image
         run: |
-          docker build -t hs14/coin-react .
+          docker build -t hs14/coin-react ./client
 
       - name: Publish Image to Docker Hub
         run: docker push hs14/coin-react

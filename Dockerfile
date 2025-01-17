@@ -6,9 +6,9 @@ FROM node:alpine3.19 as build
 
 # Set working directory and install dependencies
 WORKDIR /client
-COPY package*.json ./
+COPY client/package*.json ./
 RUN npm install
-COPY . .
+COPY client/ ./
 RUN npm run build
 
 # Production stage
