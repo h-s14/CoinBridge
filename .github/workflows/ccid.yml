@@ -1,10 +1,9 @@
-name: Deploying React Application
+name: Deploying React App on Docker
 
 on:
   push:
     branches:
       - main
-
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -12,33 +11,30 @@ jobs:
       - name: Checkout Source
         uses: actions/checkout@v4
 
-      - name: Installing Dependencies
-        run: npm install
-        working-directory: ./client
+      - name: Login to Docker Hub
+        run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
 
-      - name: Building The App
-        run: npm run build
-        working-directory: ./client
+      - name: Build Docker Image
+        run: |
+          docker build -t hs14/coin-react
 
-      - name: Uploading the Build Artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: build-output
-          path: ./client/dist
+      - name: Publish Image to Docker Hub
+        run: docker push hs14/coin-react
 
   deploy:
-    runs-on: self-hosted
     needs: build
+    runs-on: PRS
     steps:
-      - name: Downloading Built Artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: build-output
-      - name: Remove the older files from serving directory
-        run: sudo rm -rf /var/www/coin.harkirat.site/*
+      - name: Pull image from docker hub
+        run: docker pull hs14/coin-react
 
-      - name: Moving the files to the serving directory
-        run: sudo mv /home/ubuntu/coinBridge/_work/CoinBridge/CoinBridge/* /var/www/coin.harkirat.site/
+      - name: Stop and Remove Existing Container
+        run: |
+          docker stop coin-react || true
+          docker rm coin-react || true
 
-      - name: Restart Nginx
-        run: sudo systemctl restart nginx
+      - name: Run Docker Container
+        run: |
+          docker run -d -p 5500:80\
+           --name coin-react\
+           hs14/coin-react

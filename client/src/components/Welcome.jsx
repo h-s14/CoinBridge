@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import { SiEthereum } from "react-icons/si";
 import { BsInfoCircle } from "react-icons/bs";
-import { ethers } from "ethers";
 import { TransactionContext } from "../contexts/TransactionContext";
 import { Loader } from "./";
 import { shortenAddress } from "../utils/shortenAddress";
