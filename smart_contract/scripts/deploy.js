@@ -1,5 +1,9 @@
+import { network } from "hardhat";
+
 const main = async () => {
-  const Transactions = await hre.ethers.getContractFactory("Transactions");
+  const { ethers } = await network.connect();
+
+  const Transactions = await ethers.getContractFactory("Transactions");
   const transactions = await Transactions.deploy();
 
   await transactions.waitForDeployment();

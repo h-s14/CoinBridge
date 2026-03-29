@@ -1,6 +1,7 @@
 {
   "name": "smart_contract",
   "version": "1.0.0",
+  "type": "module",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -9,8 +10,17 @@
   "author": "",
   "license": "ISC",
   "description": "",
+  "overrides": {
+    "serialize-javascript": "^7.0.5",
+    "diff": "^8.0.4",
+    "elliptic": "^6.6.1"
+  },
   "devDependencies": {
-    "@nomicfoundation/hardhat-toolbox": "^5.0.0",
-    "hardhat": "^2.22.7"
+    "@nomicfoundation/hardhat-ethers": "^4.0.6",
+    "@nomicfoundation/hardhat-toolbox-mocha-ethers": "^3.0.3",
+    "chai": "^5.1.2",
+    "ethers": "^6.16.0",
+    "hardhat": "^3.2.0",
+    "mocha": "^11.0.0"
   }
 }
